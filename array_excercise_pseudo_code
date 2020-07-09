@@ -1,0 +1,64 @@
+####check if string has unique characters - parameter string
+no other data structure
+if other data structure
+    - caching
+assumption - its ASCII set characters so 128 combinations
+if its ASCII and where we can have only 128 chars so string length > 128 
+    return false instantly (cover the edge case)
+
+"hello"
+
+//complexity O(n2) 
+unique(string)  
+    //convert string to array of chars // ["h","e","l","l","o"]
+    //loop through the list
+    //check each element with other
+    for loop start at i
+        for loop start at j+1
+            if list[i] === list[j+1] return false
+            else next element;
+    return true
+
+####given two strings check one is permutation of other - parameter 2 strings
+
+// complexity O(n)
+permutation(s1, s2)
+    if s1.length !== s2.length return false;
+    else 
+        cache = new Map()
+        for i=0 i<s1.length i++
+            cache.set(s1[i], true);
+        for i=0 i<s2.length i++
+            if cache.get(s2[i])
+                return true;
+        return false
+
+####convert all space in a string to "%20" - parameter string and length
+
+//complexity O(n)
+replaceSpace(s1, length)
+    if s1.length
+        s1 = s1.split(" ")
+        s1 = s1.join("%20")
+        return s1
+    else 
+        return false
+
+####given a string check if permutation of it can generate a palidrome word
+//palidrome is a word which is same from forwards and backwards
+//logic for this each character should be twice only one character which will be in the 
+// middle can be once.
+
+permutationPalindrome(str) 
+    str length is greater than 0
+    if yes 
+        convert string into array
+        loop through array and store each char in a cache {a:1}
+        the value of the char key should be the times it is found in the array
+        once done 
+        do another loop in cache and find if more than an element has odd value
+
+
+
+
+ 

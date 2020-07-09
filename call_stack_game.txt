@@ -1,0 +1,30 @@
+call stack game steps:
+1. Push called Fn on stack.
+2. Execute Fn body.
+until...
+... another fn is called:
+     Pause the current execution and start at step 1.
+... a return is hit:
+     Pop the current Fn off the stack.
+     Resume executing the previous Fn.
+
+function helper(head, pointer) {
+     if(head===pointer) return arr[pointer];
+     console.log('head', head);
+     console.log('pointer', pointer);
+     const mid = Math.floor((head+pointer)/2);
+     if(search===arr[mid]) return mid;
+     if(search<arr[mid]){
+          if(search<arr[0]) {
+               head = mid;
+               return helper(head, pointer);
+          } else {
+               pointer = mid;
+               return helper(head, pointer);
+          }
+     }else {
+          head = mid;
+          return helper(head, pointer);
+     }
+}
+//[9,10,11,3,4,6]

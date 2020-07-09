@@ -1,0 +1,36 @@
+#### find kth to the last element in a singly linked list
+
+findKthElem(list, k)
+    initialize a hashtable={}
+    initialize a count = 0
+    traverse all elements in linked list and store each node object in a position in hashtable, increment count 
+    return hashtable[count-k]
+
+
+#### two linked list represent 2 numbers in reverse order. add them reverse the result and store in a linked list 
+
+addReverseLinkedList(l1, l2) 
+    nl = null
+    carry = 0
+    p1 = l1
+    p2 = l2
+    n1 = nl
+    additems () => 
+        if p1 === null && p2 === null return;
+        const p1Val = p1 && p1.value ? p1.value : 0
+        const p2Val = p2 && p2.value ? p2.value : 0
+        const sum = p1Val + carry + p2Val
+        carry = 10th digit of sum
+        const node = {
+            value: 0th digit of sum,
+            next: null
+        }
+        n1 = node;
+        n1 = n1.next;
+        p1 = p1.next;
+        p2 = p2.next;
+        additems()
+        
+
+
+        

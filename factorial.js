@@ -7,7 +7,6 @@ function factorial(n) {
     // recursive case 
     // appropriate return
     // doing n-1 means we are going close to our base case
-    console.log(cache);
     return n * factorial(n-1); 
 }
 

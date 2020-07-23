@@ -77,6 +77,34 @@ class Graph {
             
         }
     }
+    breadthFirstTraversalRecursionPure(startingNode) {
+        const queue = [];
+        const nodes = [];
+        const helper = (node) => {
+            if(queue.indexOf(node) === -1 && nodes.indexOf(node) === -1) queue.push(node);
+            if(this.adjList[node].edges.length) {
+                const elem = queue.shift();
+                nodes.push(elem);
+                this.adjList[node].edges.forEach(item => {
+                    if(queue.indexOf(item) === -1 && nodes.indexOf(item) === -1) queue.push(item);
+                });
+                if(queue.length) helper(queue[0]);
+            }
+        }
+        helper (startingNode.value);
+        return nodes;
+    }
+
+    depthFirstTraversalNew(startingNode) {
+        if(startingNode) {
+            if(!this.nodes.includes(startingNode.value)) this.nodes.push(startingNode.value);
+            if(this.adjList[startingNode.value].edges.length) {
+                this.adjList[startingNode.value].edges.forEach(item => {
+                        if(!this.nodes.includes(item)) this.depthFirstTraversalNew(this.adjList[item]);
+                })
+            } 
+        }
+    }
 }
 
 const myGraph = new Graph();
@@ -128,7 +156,11 @@ myGraph.addEdge(node11, node10);
 // myGraph.removeNode(node11);
 // myGraph.removeEdge(node7, node5);
 console.log(JSON.stringify(myGraph));
-// console.log(myGraph.depthFirstTraversal(node1));
-console.log('visisted nodes end', myGraph.breadthFirstTraversal(node1));
+console.log(myGraph.breadthFirstTraversalRecursionPure(node1));
+// myGraph.depthFirstTraversalNew(node1);
+// console.log(JSON.stringify(myGraph.nodes));
+// myGraph.nodes = [];
+// console.log(myGraph.breadthFirstTraversalNew(node1));
+// console.log(JSON.stringify(myGraph.nodes));
   
   

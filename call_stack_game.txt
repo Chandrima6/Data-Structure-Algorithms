@@ -8,23 +8,20 @@ until...
      Pop the current Fn off the stack.
      Resume executing the previous Fn.
 
-function helper(head, pointer) {
-     if(head===pointer) return arr[pointer];
-     console.log('head', head);
-     console.log('pointer', pointer);
-     const mid = Math.floor((head+pointer)/2);
-     if(search===arr[mid]) return mid;
-     if(search<arr[mid]){
-          if(search<arr[0]) {
-               head = mid;
-               return helper(head, pointer);
-          } else {
-               pointer = mid;
-               return helper(head, pointer);
-          }
-     }else {
-          head = mid;
-          return helper(head, pointer);
+const helper = (nums, pluck) => {
+     if(nums.length === 2) {
+          const temp1 = nums[0];
+          const temp2 = nums[1];
+          results.push([...pluck, temp1, temp2]);
+          results.push([...pluck, temp2, temp1]);
      }
+     else {
+          for(let i=0; i<nums.length; i++) {
+               const pluckElem = nums[i];
+               const updateArr = nums.filter(key => key!==pluckElem);
+               helper(updateArr, [...pluck, pluckElem]);
+          }
+     }
+     
 }
-//[9,10,11,3,4,6]
+a,b,c,w,x,y,z

@@ -1,3 +1,5 @@
+// not complete
+
 function babyNames(names, synonyms) {
     const namesListGraph = {};
     for(let item in synonyms) {

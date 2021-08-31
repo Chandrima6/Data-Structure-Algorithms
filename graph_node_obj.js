@@ -40,43 +40,43 @@ class Graph {
         this.adjList[node2.value].edges = this.adjList[node2.value].edges.filter(item => item !== node1.value);
     }
   
-    depthFirstTraversal(startingNode, func = console.log) {
-        if (startingNode) {
-            this.nodes.push(startingNode.value);
-            this.visited[startingNode.value] = true;
-            if (this.nodes.length > 0) {
-                if (this.adjList[startingNode.value].edges.length) {
-                    this.adjList[startingNode.value].edges.forEach(element => {
-                        if(this.nodes.indexOf(element) === -1) this.depthFirstTraversal(this.adjList[element], func);
-                    });
-                } else {
-                    this.nodes.pop();
-                }
-            } 
-            return this.visited;
-        }
-    }
+    // depthFirstTraversal(startingNode, func = console.log) {
+    //     if (startingNode) {
+    //         this.nodes.push(startingNode.value);
+    //         this.visited[startingNode.value] = true;
+    //         if (this.nodes.length > 0) {
+    //             if (this.adjList[startingNode.value].edges.length) {
+    //                 this.adjList[startingNode.value].edges.forEach(element => {
+    //                     if(this.nodes.indexOf(element) === -1) this.depthFirstTraversal(this.adjList[element], func);
+    //                 });
+    //             } else {
+    //                 this.nodes.pop();
+    //             }
+    //         } 
+    //         return this.visited;
+    //     }
+    // }
     
     // since recursive solution so space complexity is more but time complexity is linear as we are shifting an array 
     // so better to use linked list to make constant time
-    breadthFirstTraversal(startingNode, func = console.log) {
-        if(startingNode) {
-            if(!this.visited[startingNode.value] && (this.nodes.indexOf(startingNode.value) === -1)) this.nodes.push(startingNode.value);
-            if(this.adjList[startingNode.value].edges.length) {
-                this.adjList[startingNode.value].edges.forEach(element => {
-                    if(!this.visited[element]) {
-                        this.nodes.push(element);
-                    }
-                });
-            }
-            this.nodes.shift();
-            console.log(this.nodes);
-            this.visited[startingNode.value] = true;
-            if(this.nodes.length) this.breadthFirstTraversal(this.adjList[this.nodes[0]], func);
-            return this.visited;
+    // breadthFirstTraversal(startingNode, func = console.log) {
+    //     if(startingNode) {
+    //         if(!this.visited[startingNode.value] && (this.nodes.indexOf(startingNode.value) === -1)) this.nodes.push(startingNode.value);
+    //         if(this.adjList[startingNode.value].edges.length) {
+    //             this.adjList[startingNode.value].edges.forEach(element => {
+    //                 if(!this.visited[element]) {
+    //                     this.nodes.push(element);
+    //                 }
+    //             });
+    //         }
+    //         this.nodes.shift();
+    //         console.log(this.nodes);
+    //         this.visited[startingNode.value] = true;
+    //         if(this.nodes.length) this.breadthFirstTraversal(this.adjList[this.nodes[0]], func);
+    //         return this.visited;
             
-        }
-    }
+    //     }
+    // }
     breadthFirstTraversalRecursionPure(startingNode) {
         const queue = [];
         const nodes = [];

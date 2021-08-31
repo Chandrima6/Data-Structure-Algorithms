@@ -56,6 +56,7 @@ class ParkingLot {
 
         // single spot
         if(vehicle.size === 1) {
+            //assign spot
             for(let i=0; i< this.structure[this._currentLevel][this._currentRow].length; i++) {
                 let spot = this.structure[this._currentLevel][this._currentRow][i];
                 this._currentSpot++;
@@ -68,8 +69,11 @@ class ParkingLot {
                     return spotLocation;
                 }
             }
+            //max spot reached in a row
             if(this._currentSpot === this._maxSpots) {
+                //max row reached in a level
                 if(this._currentRow === this._maxRow) {
+                    //max level reached in parking lot
                     if(this._currentLevel === this._maxLevel) console.log('No space available');
                     else {
                         this._currentLevel++;

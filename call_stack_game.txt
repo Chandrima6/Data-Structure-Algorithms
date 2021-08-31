@@ -8,20 +8,23 @@ until...
      Pop the current Fn off the stack.
      Resume executing the previous Fn.
 
-const helper = (nums, pluck) => {
-     if(nums.length === 2) {
-          const temp1 = nums[0];
-          const temp2 = nums[1];
-          results.push([...pluck, temp1, temp2]);
-          results.push([...pluck, temp2, temp1]);
-     }
-     else {
-          for(let i=0; i<nums.length; i++) {
-               const pluckElem = nums[i];
-               const updateArr = nums.filter(key => key!==pluckElem);
-               helper(updateArr, [...pluck, pluckElem]);
+const helper = (head, copyChild) => {
+     for(let item in head) {
+          console.log('copy child', copyChild);
+          console.log('visited', visited);
+          if(item === 'val') {
+               visited[head[item]] = true;
+               copyChild[item] = head[item];
+          }
+          else if(item === 'random' && head[item] !==null) {
+               // console.log('random', item);
+               // console.log('visited', visited);
+          }
+          else if(item === 'next' && item !== null) {
+               copyChild[item] = {};
+               helper(head[item], copyChild[item]);
           }
      }
-     
 }
-a,b,c,w,x,y,z
+//[[7,null],[13,0],[11,4],[10,2],[1,0]]
+//val,next,random

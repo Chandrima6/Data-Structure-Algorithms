@@ -4,88 +4,88 @@ class HashTable {
         this._storage = [];
         this._size = size;
       }
-      /*
-      * Inserts a new key-value pair
-      * @param {string} key - the key associated with the value
-      * @param {*} value - the value to insert
-      */
-      insert(key, value) {
-          if (key && value) {
-              const hashedIndex = this._hash(key, this._size);
-              // console.log(hashedIndex + ' ' + key);
-              if (this._storage[hashedIndex] && this._storage[hashedIndex]['key'] === key) throw Error('key cannot be duplicate')
-              if (this._storage[hashedIndex] !== undefined) {
-                  if(!Array.isArray(this._storage[hashedIndex])) {
-                      // console.log('is not array',this._storage[hashedIndex]);
-                      const current = this._storage[hashedIndex];
-                      this._storage[hashedIndex] = [];
-                      this._storage[hashedIndex].push(current);
-      
-                  } 
-                  this._storage[hashedIndex].push({key: key,value: value});
-                  
-              } else {
-                  // console.log('is empty',this._storage[hashedIndex])
-                  this._storage[hashedIndex] = {key: key, value: value};
-              }
-          } else {
-              throw Error('key and value not defined');
-          }
-      }
-      /*
-      * Deletes a key-value pair
-      * @param {string} key - the key associated with the value
-      * @return {*} value - the deleted value
-      */
-      remove(key) {
-          if (key) {
-              const hashedIndex = this._hash(key, this._size);
-              let deletedItem;
-              if (Array.isArray(this._storage[hashedIndex])) {
-                  this._storage[hashedIndex] = this._storage[hashedIndex].filter(item => {
-                      if (item['key'] === key) deletedItem = item['value'];
-                      return item['key'] !== key
-                  });
-                  return deletedItem;
-              }
-              deletedItem = this._storage[hashedIndex]['value']
-              this._storage[hashedIndex] = undefined;
-              return deletedItem;
-          }
-      }
-      /*
-      * Returns the value associated with a key
-      * @param {string} key - the key to search for
-      * @return {*} - the value associated with the key
-      */
-      retrieve(key) {
-          if (key) {
-              const hashedIndex = this._hash(key, this._size);
-              if (Array.isArray(this._storage[hashedIndex])) {
-                  
-                  return this._storage[hashedIndex].find(item => item['key'] === key)['value'];
-              }
-              return this._storage[hashedIndex] ? this._storage[hashedIndex]['value'] : false;
-          }
-      }  
-
-      getLength() {
-          return this._storage.length;
-      }
-      /*
-      * Hashes string value into an integer that can be mapped to an array index
-      * @param {string} str - the string to be hashed
-      * @param {number} n - the size of the storage array
-      * @return {number} - an integer between 0 and n
-      */
-      _hash(str, n) {
-        let sum = 0;
-        for (let i = 0; i < str.length; i++)
-            sum += str.charCodeAt(i) * 3
+    /*
+    * Inserts a new key-value pair
+    * @param {string} key - the key associated with the value
+    * @param {*} value - the value to insert
+    */
+    insert(key, value) {
+        if (key && value) {
+            const hashedIndex = this._hash(key, this._size);
+            // console.log(hashedIndex + ' ' + key);
+            if (this._storage[hashedIndex] && this._storage[hashedIndex]['key'] === key) throw Error('key cannot be duplicate')
+            if (this._storage[hashedIndex] !== undefined) {
+                if(!Array.isArray(this._storage[hashedIndex])) {
+                    // console.log('is not array',this._storage[hashedIndex]);
+                    const current = this._storage[hashedIndex];
+                    this._storage[hashedIndex] = [];
+                    this._storage[hashedIndex].push(current);
     
-        return sum % n;
-      }
-  }
+                } 
+                this._storage[hashedIndex].push({key: key,value: value});
+                
+            } else {
+                // console.log('is empty',this._storage[hashedIndex])
+                this._storage[hashedIndex] = {key: key, value: value};
+            }
+        } else {
+            throw Error('key and value not defined');
+        }
+    }
+    /*
+    * Deletes a key-value pair
+    * @param {string} key - the key associated with the value
+    * @return {*} value - the deleted value
+    */
+    remove(key) {
+        if (key) {
+            const hashedIndex = this._hash(key, this._size);
+            let deletedItem;
+            if (Array.isArray(this._storage[hashedIndex])) {
+                this._storage[hashedIndex] = this._storage[hashedIndex].filter(item => {
+                    if (item['key'] === key) deletedItem = item['value'];
+                    return item['key'] !== key
+                });
+                return deletedItem;
+            }
+            deletedItem = this._storage[hashedIndex]['value']
+            this._storage[hashedIndex] = undefined;
+            return deletedItem;
+        }
+    }
+    /*
+    * Returns the value associated with a key
+    * @param {string} key - the key to search for
+    * @return {*} - the value associated with the key
+    */
+    retrieve(key) {
+        if (key) {
+            const hashedIndex = this._hash(key, this._size);
+            if (Array.isArray(this._storage[hashedIndex])) {
+                
+                return this._storage[hashedIndex].find(item => item['key'] === key)['value'];
+            }
+            return this._storage[hashedIndex] ? this._storage[hashedIndex]['value'] : false;
+        }
+    }  
+
+    getLength() {
+        return this._storage.length;
+    }
+    /*
+    * Hashes string value into an integer that can be mapped to an array index
+    * @param {string} str - the string to be hashed
+    * @param {number} n - the size of the storage array
+    * @return {number} - an integer between 0 and n
+    */
+    _hash(str, n) {
+    let sum = 0;
+    for (let i = 0; i < str.length; i++)
+        sum += str.charCodeAt(i) * 3
+
+    return sum % n;
+    }
+}
   
 
 class ListNode {

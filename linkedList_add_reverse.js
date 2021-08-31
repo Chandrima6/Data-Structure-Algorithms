@@ -39,7 +39,7 @@ function addReverseLinkedList(l1, l2) {
             value: sum%10,
             next: null
         }
-        if(n1=== null) {
+        if(n1 === null) {
             n1 = node;
             nl = n1; 
         }
@@ -81,4 +81,7 @@ const l2 = {
 }
 
 console.log(JSON.stringify(addReverseLinkedList(l1, l2)))
+
+
+
 

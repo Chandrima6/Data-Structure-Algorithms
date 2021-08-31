@@ -4,6 +4,8 @@
 
 //complexity - O(n2)
 // can be done by sorting first and the bianry search
+// can't understand what is the goal
+// need to use cache and check if any letter is repeated and return false , otherwise true
 function unique(string) {
     if(string.length) {
         if(string.length === 1) return true;

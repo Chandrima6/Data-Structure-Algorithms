@@ -22,7 +22,12 @@ const mother = {
 console.log('traverse', traverse(mother));
 
 //preorder tree traversal
-
+// printing only leaf nodes 
+/*
+{ name: 'kathy', children: [] }
+{ name: 'gross', children: [] }
+{ name: 'misha', children: [] }
+*/
 function traverse(tree) {
     
     if (tree.children.length) {

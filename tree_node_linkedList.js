@@ -30,6 +30,8 @@ class LinkedList {
 function nodesLinkedList(tree) {
     let level=0;
     const linkedListArr = {};
+    // create linkedlist per level
+    // store value in the linked list in a level 
     function store(tree, level) {
         if(linkedListArr[level]) {
             linkedListArr[level].insert(tree.value);
@@ -40,12 +42,13 @@ function nodesLinkedList(tree) {
         
         // console.log(linkedListArr);
     }
-    function postOrderTraversal(tree, level) {
+    // preorder traversal of tree => root, left, right
+    function preOrderTraversal(tree, level) {
         store(tree, level);
-        if(tree.left) postOrderTraversal(tree.left, level+1);
-        if(tree.right) postOrderTraversal(tree.right, level+1);
+        if(tree.left) preOrderTraversal(tree.left, level+1);
+        if(tree.right) preOrderTraversal(tree.right, level+1);
     }
-    postOrderTraversal(tree, level);
+    preOrderTraversal(tree, level);
     return JSON.stringify(linkedListArr);
 }
 

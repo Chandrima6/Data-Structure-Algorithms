@@ -17,4 +17,4 @@ function permutation(s1, s2) {
 }
 
 console.log(permutation("dog", "god"))
-
+// this logic makes time complexity of n but it would have been sorted and then equality check done would be nlogn which is bad than n

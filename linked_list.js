@@ -40,6 +40,9 @@ class LinkedList {
     * Removes the value at the end of the linked list - O(n)
     * @return {*} - the removed value
     */
+   // if this.tail points to end node then we have reference to the last node
+   // if we have a reference to the deleted node then we dont have to traverse 
+   // so it will be a constant time operation
     removeTail() {
         const elem = this.tail;
         if (this.head === this.tail) {

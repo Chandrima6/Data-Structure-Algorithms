@@ -33,11 +33,11 @@ console.log('Task 2 cached value:', memoTimes10Cached(9));	// cached
 // Task 3: Use a local cache using concepts of closure and meoization, instead of cluttering global scope. 
 // Memoization with closure - previous function refactored to avoid updating variable in global scope
 // we are storing the big return in memoTimes10 
-// the returned function is closing over variable cache.
+// the returned function is closing over constant cache.
 // memoTimes10Func is called once and then cache is defined 
 // rest of the time we call the function we are getting returned 
-// Since the returned function was defined in a scope where it has another variable cache, 
-// it remembers the cache variable until that scope is not destroyed.
+// Since the returned function was defined in a scope where it has another constant cache, 
+// it remembers the cache constant value until that scope is not destroyed.
 
 // note: inner function not named and not needed in this scenario but 
 // in situations like we are doing recursion and inner function parameter should change in every iteration

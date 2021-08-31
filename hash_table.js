@@ -1,4 +1,5 @@
-/** Class representing a Hash Table */class HashTable {
+/** Class representing a Hash Table */
+class HashTable {
     constructor() {
       this._storage = [];
       this._size = 10;

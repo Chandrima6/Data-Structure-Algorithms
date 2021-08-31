@@ -13,5 +13,7 @@ function moveDisks(n, start, buffer, dest) {
     return [start, buffer, dest];
 }
 
-
+// three vertical towers => source, buffer, destination
+// source tower has n rings with biggest at the bottom and smallest at the top
+// job is to move the rings and place in destination tower in same order.
 console.log(moveDisks(3, [3,2,1], [], []));
